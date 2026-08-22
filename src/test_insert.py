@@ -1,17 +1,13 @@
-from db import execute_query
-from db import execute_query_select
+from medicine_database.models import Medicine
+from medicine_database.repository import save_medicine
 
-execute_query(
-    """
-    INSERT INTO medicines
-    (brand_name, generic_name, manufacturer_name)
-    VALUES (%s, %s, %s)
-    """,
-    (
-        "Advil",
-        "Ibuprofen",
-        "Pfizer"
-    )
+
+medicine = Medicine(
+    fda_id="manual-example-advil",
+    brand_name="Advil",
+    generic_name="Ibuprofen",
+    manufacturer_name="Pfizer",
+    substance_name="Ibuprofen",
 )
 
-print(execute_query_select("SELECT * FROM medicines"))
+print(save_medicine(medicine))
