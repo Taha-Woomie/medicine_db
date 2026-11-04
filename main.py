@@ -1,8 +1,7 @@
-import requests
-import json
+from src.medicine_database.api import app
 
-url = "https://api.fda.gov/drug/label.json?limit=1"
 
-data = requests.get(url).json()
+if __name__ == "__main__":
+    import uvicorn
 
-print(json.dumps(data, indent=4))
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
